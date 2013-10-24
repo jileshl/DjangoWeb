@@ -1,0 +1,4 @@
+DjangoWeb
+=========
+
+Sample Django Application
