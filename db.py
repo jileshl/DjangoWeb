@@ -13,11 +13,15 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, scoped_session
 from sqlalchemy.pool import NullPool, QueuePool, StaticPool
 
-from dt_crypto import DTCrypto
-
 import logging
-log = logging.getLogger(__class__)
-connections_dictionary = {}
+log = logging.getLogger()
+connections_dictionary = {'default': {'host': '10.55.36.212',
+                                      'Dialect': 'oracle',
+                                      'Driver': 'cx_oracle',
+                                      'port':'1433',
+                                      'User': 'oracle',
+                                      'Password': 'system',
+                                      'Name': 'xe'}}
 CONNECTION_KEY = 'default'
 
 # TODO
@@ -60,7 +64,7 @@ def _init_engine(connection_key, connection_dictionary):
         '%s+%s://%s:%s@%s' % (
             connection_dictionary['Dialect'],
             # The actual import is cx_Oracle,
-se            # but SQLAlchemy wants cx_oracle, so we lowercase it
+            # but SQLAlchemy wants cx_oracle, so we lowercase it
             # answer: the string is an RFC-1738 style URL so the "protocol"
             #         portion (i.e. left of the first":") must be lower-case
             connection_dictionary['Driver'].lower(),
@@ -93,15 +97,6 @@ def _initialize(connections_filename=None,
     # reset plaintext if the the default file is used.
     #
     plaintext = True
-
-    if plaintext:
-        log.debug(
-            'reading plaintext connection file from connections_filename: %s'
-            % connections_filename,
-            extra=settings.LOGGING_EXTRA_DATA)
-        with open(connections_filename) as connections_file:
-            connections_dictionary = json.load(connections_file)
-
 
 def ensure_init(original_function, **kwargs):
     """
