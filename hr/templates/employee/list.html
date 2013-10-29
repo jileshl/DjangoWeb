@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+Hello world from template
+<br>
+<h2>Accessing Value from Views</h2?>
+<li>{{ response_key }}</li>
+<br>
+<h2>Using For loop </h2>
+{% for i in "1234567" %}
+<li>{{i}}</li>
+{%endfor%}
+<br>
+<h2>using if condition</h2>
+{% if response_key %}
+There is an value received for Respons Key! 
+{% else %} 
+Value of the variable is empty
+{% endif %}
+<br>
+{% endblock %}
