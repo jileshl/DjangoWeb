@@ -8,11 +8,24 @@
 		<th width="25%">Manager Name</th>
 		<th width="25%">Designation</th>
 	</tr>
-	<tr>
-		<td width="25%">9329</td>
-		<td width="25%">Kamlesh Vaishnav</td>
-		<td width="25%">Nitin</td>
-		<td width="25%">Project Manager</td>
-	</tr>
+	
+	{% for item in value %} 
+			<tr>
+				<td>
+					{{ item.ID }}
+				</td>
+				<td>
+					{{ item.Name }}
+				</td>
+				<td>
+					{{ item.Manager }}
+				</td>
+				<td>
+					{{ item.Designation }}
+				</td>
+			
+			</tr>
+	{% endfor %}
+	
 </table>
 {%endblock%}

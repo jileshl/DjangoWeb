@@ -26,4 +26,14 @@ def form_test(request):
                               {'form': form,},
                               context_instance=RequestContext(request))
 def employee_list(request):
-    return render_to_response('employee/Employeelist.html', context_instance=RequestContext(request))
+    employees = [{'ID':9329,
+                'Name': 'Kamlesh',
+                'Manager': 'Nitin',
+                'Designation' : 'Project Manager'
+                },
+                 {'ID':333,
+                'Name': 'Kapil',
+                'Manager': 'Himali',
+                'Designation' : 'SE'
+                }]
+    return render_to_response('employee/Employeelist.html', {'value': employees}, context_instance=RequestContext(request))
