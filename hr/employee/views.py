@@ -25,3 +25,5 @@ def form_test(request):
     return render_to_response('employee/detail.html',
                               {'form': form,},
                               context_instance=RequestContext(request))
+def employee_list(request):
+    return render_to_response('employee/Employeelist.html', context_instance=RequestContext(request))
