@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{%block content%}
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
+
+
+</script>
+<script type="text/javascript" charset="utf-8">
+           $(document).ready(function() {
+	
+	alert('started');
+                $.ajax({
+        url : 'http://localhost:8001/tastypiedemo/jobs/',        
+        type : 'GET',        
+        contentType:'application/json',
+        dataType: 'application/json',
+        success : function(data) {
+            alert('hello');
+                  },
+        onerror :function(data) {
+            		alert('error');
+                   }
+        
+    }).done(function() {
+  		    alert('done');
+		});;
+   });
+        </script>
+
+
+<table>
+	<tr>
+		<th width="25%">JobId</th>
+		<th width="25%">Job_title</th>
+		<th width="25%">Max_salary</th>
+		<th width="25%">Min_salary</th>
+	</tr>
+	
+	{% for item in value %} 
+			<tr>
+				<td>
+					{{ item.JobId }}
+				</td>
+				<td>
+					{{ item.Job_title }}
+				</td>
+				<td>
+					{{ item.Max_salary }}
+				</td>
+				<td>
+					{{ item.Min_salary }}
+				</td>
+			
+			</tr>
+	{% endfor %}
+	
+</table>
+{%endblock%}
