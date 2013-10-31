@@ -1,31 +1,27 @@
 {% extends "base.html" %}
 
 {%block content%}
-<table>
-	<tr>
-		<th width="25%">EmployeeID</th>
-		<th width="25%">Name</th>
-		<th width="25%">Manager Name</th>
-		<th width="25%">Designation</th>
-	</tr>
-	
-	{% for item in value %} 
-			<tr>
-				<td>
-					{{ item.ID }}
-				</td>
-				<td>
-					{{ item.Name }}
-				</td>
-				<td>
-					{{ item.Manager }}
-				</td>
-				<td>
-					{{ item.Designation }}
-				</td>
-			
-			</tr>
-	{% endfor %}
-	
+<table cellpadding="0" cellspacing="0" border="0" id="employeeTable">
+	<thead class="dataTable">
+		<tr>
+			<th width="25%">EmployeeID</th>
+			<th width="25%">Name</th>
+			<th width="25%">Manager Name</th>
+			<th width="25%">Designation</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		{% for item in value %}
+		<tr>
+			<td> {{ item.ID }} </td>
+			<td> {{ item.Name }} </td>
+			<td> {{ item.Manager }} </td>
+			<td> {{ item.Designation }} </td>
+
+		</tr>
+		{% endfor %}
+	</tbody>
+
 </table>
 {%endblock%}
